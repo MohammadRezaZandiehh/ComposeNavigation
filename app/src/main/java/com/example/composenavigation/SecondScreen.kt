@@ -4,6 +4,7 @@ import androidx.compose.foundation.layout.*
 import androidx.compose.material.Button
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.traceEventEnd
 import androidx.compose.ui.Alignment.Companion.CenterHorizontally
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
@@ -26,9 +27,21 @@ fun SecondScreen(
 
         Spacer(modifier = Modifier.height(40.dp))
         Button(onClick = {
-            navController.navigate(Screen.Home.route)
+            /**First way:
+            navController.popBackStack()
+             */
+            /**Second way:*/
+            navController.navigate(Screen.Home.route){
+                popUpTo(Screen.Home.route){
+                    inclusive = true
+                }
+            }
         }) {
             Text(text = "Go To Home Screen")
         }
     }
 }
+
+/**
+ * popUpTo: put this page(Home screen) in stack exactly before the current page(second screen)
+ * and when I click on "Back bottun", close it for me. ==> did not create a new screen and just transit them to gather*/
