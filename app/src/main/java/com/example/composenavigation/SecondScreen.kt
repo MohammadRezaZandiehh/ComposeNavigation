@@ -13,7 +13,8 @@ import androidx.navigation.NavHostController
 
 @Composable
 fun SecondScreen(
-    navController: NavHostController
+    navController: NavHostController,
+    params: String
 ) {
     Column(
         modifier = Modifier.fillMaxSize(),
@@ -21,7 +22,7 @@ fun SecondScreen(
         horizontalAlignment = CenterHorizontally
     ) {
         Text(
-            text = "My Second Screen",
+            text = params,
             color = Color.Magenta
         )
 

@@ -24,7 +24,8 @@ fun HomeScreen(
         )
         Spacer(modifier = Modifier.height(40.dp))
         Button(onClick = {
-            navController.navigate(Screen.Second.route)
+            val name = "Mohammad Reza"
+            navController.navigate(Screen.Second.route + "/$name")
         }) {
             Text(text = "Go To Second Screen")
         }
