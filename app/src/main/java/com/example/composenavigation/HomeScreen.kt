@@ -25,9 +25,14 @@ fun HomeScreen(
         Spacer(modifier = Modifier.height(40.dp))
         Button(onClick = {
             val name = "Mohammad Reza"
-            navController.navigate(Screen.Second.route + "/$name")
+            navController.navigate(Screen.Second.route + "?params=$name")
         }) {
             Text(text = "Go To Second Screen")
         }
     }
 }
+
+/**
+ * if in line : navController.navigate(Screen.Second.route + "?params=$name")
+ * we don't write the "?params=$name" --> it will not be crashed and just show the defaultValue = "Params Is Empty"
+ * that we specify in SetupNavGraph in the textView in SecondScreen*/

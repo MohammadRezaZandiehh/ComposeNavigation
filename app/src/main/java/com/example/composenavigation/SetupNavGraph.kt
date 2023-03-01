@@ -22,9 +22,10 @@ fun SetupNavGraph(
         }
 
         composable(
-            route = Screen.Second.route + "/{params}",
+            route = Screen.Second.route + "?params={params}",
             arguments = listOf(navArgument("params") {
                 type = NavType.StringType
+                defaultValue = "Params Is Empty"
             })
         ) {
             val params = it.arguments?.getString("params")
