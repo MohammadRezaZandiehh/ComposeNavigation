@@ -22,7 +22,7 @@ fun SetupNavGraph(
         }
 
         composable(
-            route = Screen.Second.route + "?name={name}?age={age}",
+            route = Screen.Second.route + "/{name}/{age}",
             arguments = listOf(
                 navArgument("name") {
                     type = NavType.StringType
