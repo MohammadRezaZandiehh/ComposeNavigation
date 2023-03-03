@@ -14,7 +14,8 @@ import androidx.navigation.NavHostController
 @Composable
 fun SecondScreen(
     navController: NavHostController,
-    params: String
+    name: String,
+    age: String
 ) {
     Column(
         modifier = Modifier.fillMaxSize(),
@@ -22,7 +23,7 @@ fun SecondScreen(
         horizontalAlignment = CenterHorizontally
     ) {
         Text(
-            text = params,
+            text = "$name old is: $age",
             color = Color.Magenta
         )
 
@@ -32,8 +33,8 @@ fun SecondScreen(
             navController.popBackStack()
              */
             /**Second way:*/
-            navController.navigate(Screen.Home.route){
-                popUpTo(Screen.Home.route){
+            navController.navigate(Screen.Home.route) {
+                popUpTo(Screen.Home.route) {
                     inclusive = true
                 }
             }

@@ -22,22 +22,31 @@ fun SetupNavGraph(
         }
 
         composable(
-            route = Screen.Second.route + "?params={params}",
-            arguments = listOf(navArgument("params") {
-                type = NavType.StringType
-                defaultValue = "Params Is Empty"
-            })
+            route = Screen.Second.route + "?name={name}?age={age}",
+            arguments = listOf(
+                navArgument("name") {
+                    type = NavType.StringType
+                    defaultValue = ""
+                    nullable = true
+                },
+                navArgument("age") {
+                    type = NavType.StringType
+                    defaultValue = ""
+                    nullable = true
+                }
+            )
         ) {
-            val params = it.arguments?.getString("params")
-            params?.let { p ->
-                SecondScreen(
-                    navController = navController,
-                    params = p
-                )
-            }
+
+            val name = it.arguments?.getString("name")
+            val age = it.arguments?.getString("age")
+            SecondScreen(
+                navController = navController,
+                name = name.toString(),
+                age = age.toString()
+            )
         }
     }
 }
 /**
- * for all screens that we have, we have to write these composable functions
- *  */
+ * 1- for all screens that we have, we have to write these composable functions
+ * 2- we define nullable = true so if in HomeScreen we don't write age or name -> app will not be crashed :) */
