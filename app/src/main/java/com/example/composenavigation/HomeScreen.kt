@@ -9,6 +9,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavHostController
+import com.google.gson.Gson
 
 @Composable
 fun HomeScreen(
@@ -24,9 +25,10 @@ fun HomeScreen(
         )
         Spacer(modifier = Modifier.height(40.dp))
         Button(onClick = {
-            val name = "Mohammad Reza"
-            val age = "23"
-            navController.navigate(route = Screen.Second.withArg(name, age))
+            val person = Person("MohammadReza", "Zandieh", 23, "09203903530")
+            val gson = Gson()
+            val personAsString = gson.toJson(person)
+            navController.navigate(route = Screen.Second.withArg(personAsString))
         }) {
             Text(text = "Go To Second Screen")
         }
